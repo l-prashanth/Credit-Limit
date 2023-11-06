@@ -16,7 +16,7 @@ public class JWTProcessorImpl implements JWTProcessor{
     private JwtTokenUtil jwtTokenUtil;
 
     @Override
-    public JWTTokenResponse generateToken(String clientId, String clientSecret) {
+    public JWTTokenResponse generateToken(String clientId, String clientSecret,String traceId) {
         if (clientId.equals("USER") && clientSecret.equals("*abc")) {
             String token = jwtTokenUtil.generateToken(clientId);
             JWTTokenResponse jwtTokenResponse = new JWTTokenResponse();
@@ -28,7 +28,7 @@ public class JWTProcessorImpl implements JWTProcessor{
 
         }
         else{
-            throw JWTException.builder().errorCode("INVALID_TOKEN").errorMessage("The token is Invalid").status(401).build();
+            throw JWTException.builder().errorCode("INVALID_TOKEN").errorMessage("The token is Invalid").traceId(traceId).status(401).build();
         }
     }
 

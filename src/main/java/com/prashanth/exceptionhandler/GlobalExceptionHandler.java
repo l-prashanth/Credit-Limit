@@ -2,7 +2,6 @@ package com.prashanth.exceptionhandler;
 
 import com.prashanth.exceptionhandler.exceptionhandler.JWTException;
 import com.prashanth.model.token.JWTTokenResponse;
-import com.prashanth.model.trace.TraceIdScope;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +22,13 @@ import java.util.Set;
 @Configuration
 public class GlobalExceptionHandler {
 
-    @Autowired
-    private TraceIdScope traceId;
 
 
     @ExceptionHandler(JWTException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     public Errors jwtException(JWTException jwtException) {
-        return wrapErrorMessages(jwtException.getErrorCode(), jwtException.getErrorMessage(), "hgjhj", jwtException.getStatus());
+        return wrapErrorMessages(jwtException.getErrorCode(), jwtException.getErrorMessage(),jwtException.getTraceId(), jwtException.getStatus());
     }
 
     private Errors wrapErrorMessagesForJWT(String code, String message, Integer status) {

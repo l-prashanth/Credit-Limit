@@ -8,6 +8,7 @@
           <option value="grant_type" />
           <option value="client_secret" />
           <option value="Trace_Id" />
+          <option value="trace_id" />
         </set>
       </option>
     </inspection_tool>

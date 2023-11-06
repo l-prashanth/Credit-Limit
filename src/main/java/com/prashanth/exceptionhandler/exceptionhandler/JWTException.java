@@ -8,5 +8,6 @@ import lombok.Data;
 public class JWTException extends RuntimeException {
     String errorCode;
     String errorMessage;
+    String traceId;
     int status;
 }
