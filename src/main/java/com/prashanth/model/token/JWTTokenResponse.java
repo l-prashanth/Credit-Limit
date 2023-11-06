@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JWTTokenResponse {
 
+    private String tokenType;
     private String token;
     private String expirationTime;
 }
