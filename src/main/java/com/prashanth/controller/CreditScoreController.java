@@ -20,27 +20,6 @@ public class CreditScoreController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-//    @PostMapping("/generate-token")
-//    public ResponseEntity<Object> generateToken(@RequestBody JWTTokenRequest jwtTokenRequest){
-//        String jwtUsername=jwtTokenRequest.getClientId();
-//        String jwtPassword=jwtTokenRequest.getClientSecret();
-//        if(jwtUsername.equals("USER") && jwtPassword.equals("*abc")){
-//            String token = jwtTokenUtil.generateToken(jwtUsername);
-//            JWTTokenResponse jwtTokenResponse = new JWTTokenResponse();
-//            jwtTokenResponse.setToken(token);
-//            jwtTokenResponse.setExpirationTime("60 seconds");
-//            return ResponseEntity.ok(jwtTokenResponse);
-//        }else {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Credentials");
-//        }
-//    }
-//
-//    @PostMapping("/validate-token")
-//    public ResponseEntity<Object> validateToken(@RequestBody JWTTokenResponse jwtTokenResponse){
-//        return ResponseEntity.ok(jwtTokenUtil.validateToken(jwtTokenResponse.getToken()));
-//    }
-
-
     @GetMapping("/limit")
     public  ResponseEntity<?> welcome(@RequestHeader(value = "Authorization",required = false) String token) {
         if (token == null){
