@@ -10,13 +10,14 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
 
+import static com.prashanth.commonconstants.CommonConstants.EXPIRATION_TIME;
+
 @Component
 public class JwtTokenUtil {
 
     private final Key secreteKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     //1 minute expiration time
-    private static final long EXPIRATION_TIME = 60000;
 
     public String generateToken(String username) {
         Date now = new Date();

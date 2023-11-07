@@ -1,8 +1,11 @@
 package com.prashanth.controller;
 
 
+import com.prashanth.exceptionhandler.exceptionhandler.JWTException;
 import com.prashanth.model.token.JWTTokenRequest;
 import com.prashanth.model.token.JWTTokenResponse;
+import com.prashanth.service.creditservice.CreditProcessorImpl;
+import com.prashanth.utils.CommonUtils;
 import com.prashanth.utils.JwtTokenUtil;
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +21,10 @@ import java.util.List;
 public class CreditScoreController {
 
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private CreditProcessorImpl creditProcessor;
 
     @GetMapping("/limit")
-    public  ResponseEntity<?> welcome(@RequestHeader(value = "Authorization",required = false) String token) {
-        if (token == null){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized. Token is required");
-        }else{
-            String tokenValue = token.substring(7);
-            String isTokenValid = jwtTokenUtil.validateToken(tokenValue);
-            if (isTokenValid.equalsIgnoreCase("valid")){
-                return new ResponseEntity<>("credit logic", HttpStatus.OK);
-            }else{
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized due to: " + isTokenValid);
-            }
-        }
+    public ResponseEntity<String> welcome(@RequestHeader(value = "Authorization", required = false) String token) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(creditProcessor.credit(token));
     }
 }
