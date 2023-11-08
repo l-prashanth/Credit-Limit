@@ -1,4 +1,4 @@
-package com.prashanth.commonconstants;
+package com.prashanth.constants;
 
 public class CommonConstants {
 

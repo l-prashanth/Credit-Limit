@@ -4,19 +4,17 @@ import com.prashanth.model.token.JWTTokenResponse;
 import com.prashanth.service.jwtservice.JWTProcessorImpl;
 import com.prashanth.utils.JwtTokenUtil;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/jwt")
+@AllArgsConstructor
 public class JWTTokenController {
 
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
     private JWTProcessorImpl jwtProcessor;
 
     @PostMapping("/generate-token")

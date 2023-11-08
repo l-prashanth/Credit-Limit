@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class JWTException extends RuntimeException {
-    String errorCode;
-    String errorMessage;
-    String traceId;
-    int status;
+    final String errorCode;
+    final String errorMessage;
+    final String traceId;
+    final int status;
 }
