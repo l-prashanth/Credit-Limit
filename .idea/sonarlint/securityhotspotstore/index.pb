@@ -56,3 +56,8 @@ p
 @src/main/java/com/prashanth/service/jwtservice/JWTProcessor.java,f\a\fadeb1de014aba51302c914596a57745a7c5e7d2
 b
 2src/main/java/com/prashanth/CreditApplication.java,d\e\dea2808a65d5c0daf2c5e870c5f201d00470e8f2
+p
+@src/main/java/com/prashanth/configuration/InterceptorConfig.java,f\2\f274bdb55995f161246a08d8e396d2bb0799026a
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
