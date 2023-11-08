@@ -4,6 +4,8 @@ import com.prashanth.exceptionhandler.exceptionhandler.JWTException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static com.prashanth.constants.CommonConstants.EXPIRED_TOKEN;
+import static com.prashanth.constants.CommonConstants.INVALID_TOKEN;
 import static com.prashanth.exceptionhandler.CreditErrorCode.*;
 
 @Component
@@ -12,18 +14,16 @@ public class CommonUtils {
 
     private JwtTokenUtil jwtTokenUtil;
 
-    public boolean validateToken(String token) {
+    public void validateToken(String token) {
         if (CommonUtils.isNotNullOrEmpty(token)) {
             String tokenValue = token.substring(7);
             String isTokenValid = jwtTokenUtil.validateToken(tokenValue);
-            if (isTokenValid.equalsIgnoreCase("valid")) {
-                return true;
-            } else if (isTokenValid.equalsIgnoreCase("expired token")) {
+            if (isTokenValid.equalsIgnoreCase(EXPIRED_TOKEN)) {
                 throw JWTException.builder()
                         .errorCode(TOKEN_EXPIRED.errorCode)
                         .errorMessage(TOKEN_EXPIRED.errorMessage)
                         .status(TOKEN_EXPIRED.httpStatus).build();
-            } else if (isTokenValid.equalsIgnoreCase("invalid token")) {
+            } else if (isTokenValid.equalsIgnoreCase(INVALID_TOKEN)) {
                 throw JWTException.builder()
                         .errorCode(TOKEN_INVALID.errorCode)
                         .errorMessage(TOKEN_INVALID.errorMessage)
