@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class JwtConfigValues {
     private String clientId;
     private String clientSecret;
+
 }
