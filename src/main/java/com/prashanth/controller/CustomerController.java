@@ -1,17 +1,14 @@
 package com.prashanth.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prashanth.configuration.InsertingMultipleDocuments;
 import com.prashanth.model.customer.Customer;
 import com.prashanth.repository.CreditRepository;
+import com.prashanth.service.customerservice.CustomerProcessorImpl;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.bson.Document;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,30 +18,14 @@ import java.util.Optional;
 public class CustomerController {
 
     private CreditRepository repository;
-    private InsertingMultipleDocuments insertingMultipleDocuments;
+    private CustomerProcessorImpl customerProcessorImpl;
 
     @SneakyThrows
     @PostMapping("addCustomer")
-    public String saveBook(@RequestBody Customer customer) {
-//        insertingMultipleDocuments.insertmultipledocs();
-//        List<Document> list = new ArrayList<Document>();
-//        list.add(document1);
-//        list.add(document2);
-//        list.add(document3);
-        repository.save(customer);
-        return "Added book with id : " + customer.getId();
-    }
-
-    @SneakyThrows
-    @PostMapping("addCustomer1")
-    public String saveBook() {
-        insertingMultipleDocuments.insertmultipledocs();
-//        List<Document> list = new ArrayList<Document>();
-//        list.add(document1);
-//        list.add(document2);
-//        list.add(document3);
-//        repository.save(customer);
-        return "Added book with id : ";
+    public ResponseEntity<String> saveBook(
+            @RequestHeader(value = "Authorization", required = false) String token,
+            @RequestBody Customer customer) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.appendCustomer(customer,token));
     }
 
     @GetMapping("/findAllCustomer")

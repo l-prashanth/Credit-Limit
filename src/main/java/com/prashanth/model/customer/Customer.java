@@ -1,7 +1,8 @@
 package com.prashanth.model.customer;
 
-
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Generated;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,8 +12,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 public class Customer {
     @Id
-    private int id;
+    @Generated
+    @NotNull
+    private int customerId;
+    @NotNull
     private String name;
-    private String age;
-    private int cibil;
+    @NotNull
+    private int age;
+    @NotNull
+    private int creditScore;
+    @NotNull
+    private long salary;
+    @NotNull
+    private boolean existingCustomer;
 }

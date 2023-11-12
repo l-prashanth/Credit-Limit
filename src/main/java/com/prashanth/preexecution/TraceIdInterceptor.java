@@ -1,6 +1,5 @@
 package com.prashanth.preexecution;
 
-import com.prashanth.configuration.InsertingMultipleDocuments;
 import com.prashanth.model.trace.TraceIdScope;
 import com.prashanth.utils.CommonUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +17,6 @@ import java.util.UUID;
 public class TraceIdInterceptor implements HandlerInterceptor {
 
     private TraceIdScope traceId;
-    private InsertingMultipleDocuments insertingMultipleDocuments;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
@@ -29,7 +27,6 @@ public class TraceIdInterceptor implements HandlerInterceptor {
         else{
             traceId.setTraceId(traceId.getTraceId());
         }
-//        insertingMultipleDocuments.insertmultipledocs();
         return true;
     }
 }
