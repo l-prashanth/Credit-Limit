@@ -1,14 +1,9 @@
 package com.prashanth.utils;
 
 import com.prashanth.exceptionhandler.exceptionhandler.JWTException;
-import com.prashanth.repository.CreditRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.Document;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static com.prashanth.constants.CommonConstants.EXPIRED_TOKEN;
 import static com.prashanth.constants.CommonConstants.INVALID_TOKEN;

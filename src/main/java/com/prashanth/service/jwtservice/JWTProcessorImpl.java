@@ -27,7 +27,7 @@ public class JWTProcessorImpl implements JWTProcessor {
             JWTTokenResponse jwtTokenResponse = new JWTTokenResponse();
             jwtTokenResponse.setTokenType("Bearer");
             jwtTokenResponse.setToken(token);
-            jwtTokenResponse.setExpirationTime("15000 milliseconds");
+            jwtTokenResponse.setExpirationTime("150000 milliseconds");
             return jwtTokenResponse;
 
         } else {

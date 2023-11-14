@@ -1,7 +1,7 @@
 package com.prashanth.controller;
 
 import com.prashanth.model.customer.Customer;
-import com.prashanth.repository.CreditRepository;
+import com.prashanth.repository.CustomerRepository;
 import com.prashanth.service.customerservice.CustomerProcessorImpl;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CustomerController {
 
-    private CreditRepository repository;
+    private CustomerRepository repository;
     private CustomerProcessorImpl customerProcessorImpl;
 
     @SneakyThrows
@@ -25,23 +25,29 @@ public class CustomerController {
     public ResponseEntity<String> saveBook(
             @RequestHeader(value = "Authorization", required = false) String token,
             @RequestBody Customer customer) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.appendCustomer(customer,token));
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.appendCustomer(customer, token));
     }
 
     @GetMapping("/findAllCustomer")
-    public List<Customer> getBooks() {
-        return repository.findAll();
+//    public List<Customer> getBooks() {
+//        return repository.findAll();
+//    }
+    public ResponseEntity<List<Customer>> getBooks(@RequestHeader(value = "Authorization", required = false) String token) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.getAllCustomer(token));
     }
 
     @GetMapping("/findAllCustomer/{id}")
-    public Optional<Customer> getBook(@PathVariable int id) {
-        return repository.findById(id);
+    public ResponseEntity<Optional<Customer>> getBook(
+            @PathVariable int id,
+            @RequestHeader(value = "Authorization", required = false) String token) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.getCustomerById(id,token));
+
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteBook(@PathVariable int id) {
-        repository.deleteById(id);
-        return "book deleted with id : " + id;
+    public ResponseEntity<String> deleteBook(
+            @PathVariable int id,
+            @RequestHeader(value = "Authorization", required = false) String token) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.deleteCustomer(id, token));
     }
-
 }

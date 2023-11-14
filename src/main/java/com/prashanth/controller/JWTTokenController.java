@@ -25,10 +25,4 @@ public class JWTTokenController {
             @Schema(description = "Trace Id") @RequestHeader(value = "trace_id") String traceId) {
         return ResponseEntity.status(HttpStatus.CREATED).body(jwtProcessor.generateToken(clientId, clientSecret,traceId));
     }
-
-    @PostMapping("/validate-token")
-    public ResponseEntity<Object> validateToken(@RequestBody JWTTokenResponse jwtTokenResponse) {
-        return ResponseEntity.ok(jwtTokenUtil.validateToken(jwtTokenResponse.getToken()));
-    }
-
 }

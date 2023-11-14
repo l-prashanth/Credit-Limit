@@ -1,0 +1,34 @@
+
+l
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÜÉ­e8¡¿½1
+f
+java:S1854!"DRemove this useless assignment to local variable "existingCustomer".(…Æ°íÿÿÿÿÿ8é¥º½1
+\
+java:S1854 ":Remove this useless assignment to local variable "salary".(Ì‹›ùÿÿÿÿ8ê¥º½1
+\
+java:S1854"?Remove this useless assignment to local variable "creditScore".(ˆÍµê8ê¥º½1
+S
+java:S1854"7Remove this useless assignment to local variable "age".(İ¶ß;8ê¥º½1
+U
+java:S1854"8Remove this useless assignment to local variable "name".(Ãì‡¿8ê¥º½1
+[
+java:S1854">Remove this useless assignment to local variable "customerId".(Œ±¬ã8ê¥º½1
+L
+java:S1481"/Remove this unused "customerId" local variable.(Œ±¬ã8í¥º½1
+F
+java:S1481")Remove this unused "name" local variable.(Ãì‡¿8í¥º½1
+D
+java:S1481"(Remove this unused "age" local variable.(İ¶ß;8í¥º½1
+M
+java:S1481"0Remove this unused "creditScore" local variable.(ˆÍµê8î¥º½1
+M
+java:S1481 "+Remove this unused "salary" local variable.(Ì‹›ùÿÿÿÿ8î¥º½1
+W
+java:S1481!"5Remove this unused "existingCustomer" local variable.(…Æ°íÿÿÿÿÿ8î¥º½1
+X	java:S125&"<This block of commented-out lines of code should be removed.(Ú°à¬8ğ¥º½1
+v
+java:S1128"TRemove this unused import 'com.prashanth.model.apppropertiesconfig.JwtConfigValues'.(§Ö—÷ûÿÿÿÿ8ş›Æ½1
+Z
+java:S1128"=Remove this unused import 'com.prashanth.utils.JwtTokenUtil'.(¼¥™‰8ş›Æ½1
+Q
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8‰ÉÅ½1
