@@ -2,12 +2,14 @@ package com.prashanth.exceptionhandler.exceptionhandler;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
-public class CreditException {
-    String errorCode;
-    String errorMessage;
-    String traceId;
-    int status;
+public class CreditException extends RuntimeException {
+    final String errorCode;
+    final String errorMessage;
+    final String traceId;
+    final int status;
 }

@@ -22,18 +22,18 @@ public class GlobalExceptionHandler {
     TraceIdScope traceIdScope;
 
     @ExceptionHandler(JWTException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+//    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     public Errors jwtException(JWTException jwtException) {
         return wrapErrorMessages(jwtException.getErrorCode(), jwtException.getErrorMessage(),traceIdScope.getTraceId(), jwtException.getStatus());
     }
 
-//    @ExceptionHandler(CreditException.class)
+    @ExceptionHandler(CreditException.class)
 //    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-//    @ResponseBody
-//    public Errors creditException(CreditException creditException) {
-//        return wrapErrorMessages(jwtException.getErrorCode(), jwtException.getErrorMessage(),traceIdScope.getTraceId(), jwtException.getStatus());
-//    }
+    @ResponseBody
+    public Errors creditException(CreditException creditException) {
+        return wrapErrorMessages(creditException.getErrorCode(), creditException.getErrorMessage(),traceIdScope.getTraceId(), creditException.getStatus());
+    }
 
 //    @ExceptionHandler(JWTException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)

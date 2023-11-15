@@ -1,7 +1,6 @@
 package com.prashanth.controller;
 
 import com.prashanth.model.customer.Customer;
-import com.prashanth.repository.CustomerRepository;
 import com.prashanth.service.customerservice.CustomerProcessorImpl;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -13,11 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/credit")
+@RequestMapping("/customer")
 @AllArgsConstructor
 public class CustomerController {
 
-    private CustomerRepository repository;
     private CustomerProcessorImpl customerProcessorImpl;
 
     @SneakyThrows
@@ -29,9 +27,6 @@ public class CustomerController {
     }
 
     @GetMapping("/findAllCustomer")
-//    public List<Customer> getBooks() {
-//        return repository.findAll();
-//    }
     public ResponseEntity<List<Customer>> getBooks(@RequestHeader(value = "Authorization", required = false) String token) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.getAllCustomer(token));
     }

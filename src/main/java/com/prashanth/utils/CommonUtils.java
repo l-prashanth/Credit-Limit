@@ -20,7 +20,6 @@ public class CommonUtils {
         if (CommonUtils.isNotNullOrEmpty(token)) {
             String tokenValue = token.substring(7);
             String isTokenValid = jwtTokenUtil.validateToken(tokenValue);
-            log.info("check>>>" + isTokenValid);
             if (isTokenValid.equalsIgnoreCase(EXPIRED_TOKEN)) {
                 throw JWTException.builder()
                         .errorCode(TOKEN_EXPIRED.errorCode)
@@ -58,25 +57,4 @@ public class CommonUtils {
         }
         return true;
     }
-
-    public static boolean isNotNullOrEmpty1(int id, String name, int age, int cibil, Object... objects) {
-        for (Object o : objects) {
-            if (o == null || o == "") {
-                return false;
-            }
-        }
-        return true;
-    }
-//    private List<Object> objects;
-//private CreditRepository repository;
-//    public void generate(Object... objects) {
-//
-//        for (Object myObject : objects) {
-//            repository.save(customer);
-//            myObjectsArrayList.add(myObject);
-//        }
-//    }
-//    }
-
-
 }
