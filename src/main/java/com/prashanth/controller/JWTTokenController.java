@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class JWTTokenController {
 
-    private JwtTokenUtil jwtTokenUtil;
     private JWTProcessorImpl jwtProcessor;
 
     @PostMapping("/generate-token")

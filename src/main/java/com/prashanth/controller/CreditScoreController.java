@@ -27,21 +27,20 @@ public class CreditScoreController {
 
     @GetMapping("/findAllCustomerCredit")
     public ResponseEntity<List<CreditResponse>> getAllCustomerCredit(@RequestHeader(value = "Authorization", required = false) String token) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(creditProcessor.getAllCustomerCredit(token));
+        return ResponseEntity.status(HttpStatus.OK).body(creditProcessor.getAllCustomerCredit(token));
     }
 
     @GetMapping("/findAllCustomerCredit/{id}")
-    public ResponseEntity<Optional<CreditResponse>> getCustomerCreditById(
+    public ResponseEntity<CreditResponse> getCustomerCreditById(
             @PathVariable int id,
             @RequestHeader(value = "Authorization", required = false) String token) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(creditProcessor.getCustomerCreditById(id,token));
-
+        return ResponseEntity.status(HttpStatus.OK).body(creditProcessor.getCustomerCreditById(id,token));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCustomerCredit(
             @PathVariable int id,
             @RequestHeader(value = "Authorization", required = false) String token) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(creditProcessor.deleteCustomerCredit(id, token));
+        return ResponseEntity.status(HttpStatus.OK).body(creditProcessor.deleteCustomerCredit(id, token));
     }
 }

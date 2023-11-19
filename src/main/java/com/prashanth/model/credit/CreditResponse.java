@@ -1,14 +1,16 @@
 package com.prashanth.model.credit;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection = "Credit")
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class CreditResponse {
+
     @NotNull
     private int customerId;
     @NotNull

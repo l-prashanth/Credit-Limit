@@ -20,19 +20,19 @@ public class CustomerController {
 
     @SneakyThrows
     @PostMapping("addCustomer")
-    public ResponseEntity<String> saveBook(
+    public ResponseEntity<String> saveCustomer(
             @RequestHeader(value = "Authorization", required = false) String token,
             @RequestBody Customer customer) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.appendCustomer(customer, token));
     }
 
     @GetMapping("/findAllCustomer")
-    public ResponseEntity<List<Customer>> getBooks(@RequestHeader(value = "Authorization", required = false) String token) {
+    public ResponseEntity<List<Customer>> getCustomer(@RequestHeader(value = "Authorization", required = false) String token) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.getAllCustomer(token));
     }
 
     @GetMapping("/findAllCustomer/{id}")
-    public ResponseEntity<Optional<Customer>> getBook(
+    public ResponseEntity<Optional<Customer>> getCustomer(
             @PathVariable int id,
             @RequestHeader(value = "Authorization", required = false) String token) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.getCustomerById(id,token));
@@ -40,7 +40,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteBook(
+    public ResponseEntity<String> deleteCustomer(
             @PathVariable int id,
             @RequestHeader(value = "Authorization", required = false) String token) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerProcessorImpl.deleteCustomer(id, token));

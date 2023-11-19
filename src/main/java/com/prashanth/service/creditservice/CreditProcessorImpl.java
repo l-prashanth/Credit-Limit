@@ -1,17 +1,14 @@
 package com.prashanth.service.creditservice;
 
 import com.prashanth.exceptionhandler.exceptionhandler.CreditException;
-import com.prashanth.exceptionhandler.exceptionhandler.JWTException;
 import com.prashanth.model.credit.CreditResponse;
 import com.prashanth.model.customer.Customer;
 import com.prashanth.repository.CreditRepository;
-import com.prashanth.repository.CustomerRepository;
 import com.prashanth.service.customerservice.CustomerProcessorImpl;
 import com.prashanth.utils.CommonUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +26,9 @@ public class CreditProcessorImpl implements CreditProcessor {
     @Override
     public CreditResponse credit(int id, String token) {
         commonUtils.validateToken(token);
-        if (customerProcessor.getCustomerById(id, token).isPresent()) {
-            Customer customer = customerProcessor.getCustomerById(id, token).get();
+        Optional<Customer> customerDetails =customerProcessor.getCustomerById(id, token);
+        if (customerDetails.isPresent()) {
+            Customer customer = customerDetails.get();
             int customerId = customer.getCustomerId();
             String name = customer.getName();
             int age = customer.getAge();
@@ -38,7 +36,7 @@ public class CreditProcessorImpl implements CreditProcessor {
             long salary = customer.getSalary();
             boolean existingCustomer = customer.isExistingCustomer();
             double monthlySalary = (double) salary / 12;
-            if (age > 18 && age < 60) {
+            if (isValidAge(age)) {
                 int creditLimit = (int) (((creditScoreCalc(creditScore) * monthlySalary) + (monthlySalary * 0.5)) * existingCustomerCalc(existingCustomer));
                 CreditResponse creditResponse = new CreditResponse();
                 creditResponse.setCustomerId(customerId);
@@ -63,16 +61,20 @@ public class CreditProcessorImpl implements CreditProcessor {
     }
 
     @Override
-    public Optional<CreditResponse> getCustomerCreditById(int id, String token) {
+    public CreditResponse getCustomerCreditById(int id, String token) {
         commonUtils.validateToken(token);
-        return creditRepository.findById(id);
+        Optional<CreditResponse> creditCustomer = creditRepository.getCustomerCreditById(id);
+        return creditCustomer.orElse(null);
     }
 
     @Override
     public String deleteCustomerCredit(int id, String token) {
         commonUtils.validateToken(token);
-        creditRepository.deleteById(id);
-        return "Customer deleted successfully";
+        creditRepository.deleteCustomerCreditById(id);
+        return "Customer Credit Deleted Successfully";
+    }
+    private boolean isValidAge(int age){
+        return age > 18 && age < 60;
     }
 
     public double existingCustomerCalc(boolean existingCustomer) {

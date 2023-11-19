@@ -6,11 +6,9 @@ import com.prashanth.model.trace.TraceIdScope;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @Slf4j
@@ -34,14 +32,6 @@ public class GlobalExceptionHandler {
     public Errors creditException(CreditException creditException) {
         return wrapErrorMessages(creditException.getErrorCode(), creditException.getErrorMessage(),traceIdScope.getTraceId(), creditException.getStatus());
     }
-
-//    @ExceptionHandler(JWTException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ResponseBody
-//    public Errors jwtException(JWTException jwtException) {
-//        return wrapErrorMessages(jwtException.getErrorCode(), jwtException.getErrorMessage(),traceIdScope.getTraceId(), jwtException.getStatus());
-//    }
-
 
     private Errors wrapErrorMessages(String code, String message, String traceId, Integer status) {
         return Errors.builder().

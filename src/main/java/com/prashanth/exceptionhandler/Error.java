@@ -6,8 +6,8 @@ import lombok.*;
 @Builder
 public class Error {
 
-    public String code;
-    public String message;
-    public String traceId;
-    public Integer status;
+    public final String code;
+    public final String message;
+    public final String traceId;
+    public final Integer status;
 }
