@@ -8,10 +8,10 @@
 
 To install and run mongo db image
 
->docker pull mongo
->docker create mongo
->docker ps –a
->docker run --name MongoCredit -d -p 27017:27017 mongo
+- docker pull mongo
+- docker create mongo
+- docker ps –a
+- docker run --name MongoCredit -d -p 27017:27017 mongo
 
 5) Open Docker Desktop and run MongoDB - MongoCredit
 
