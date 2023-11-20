@@ -24,7 +24,7 @@ public class CreditProcessorImpl implements CreditProcessor {
 
 
     @Override
-    public CreditResponse credit(int id, String token) {
+    public String credit(int id, String token) {
         commonUtils.validateToken(token);
         Optional<Customer> customerDetails =customerProcessor.getCustomerById(id, token);
         if (customerDetails.isPresent()) {
@@ -46,7 +46,8 @@ public class CreditProcessorImpl implements CreditProcessor {
                 creditResponse.setSalary(salary);
                 creditResponse.setExistingCustomer(existingCustomer);
                 creditResponse.setCreditLimit(creditLimit);
-                return creditRepository.save(creditResponse);
+                creditRepository.save(creditResponse);
+                return "Customer Credit Details added successfully";
             }
         }
         throw CreditException.builder()

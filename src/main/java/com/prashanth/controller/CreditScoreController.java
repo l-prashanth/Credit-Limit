@@ -18,8 +18,8 @@ public class CreditScoreController {
 
     private CreditProcessorImpl creditProcessor;
 
-    @GetMapping("/limit")
-    public ResponseEntity<CreditResponse> creditLimit(
+    @PostMapping("/limit")
+    public ResponseEntity<String> creditLimit(
             @RequestHeader(value = "Authorization", required = false) String token,
             @RequestBody CreditRequest creditRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(creditProcessor.credit(creditRequest.getId(),token));
