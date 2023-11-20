@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "66fafaca-71c3-4c4e-8de7-2cdbc9554ffe",
+		"name": "Bearer Token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30958489"
+	},
+	"item": [
+		{
+			"name": "Generate Bearer Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "grant_type",
+						"value": "client_credentials",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "Vwb307hj-0262e-48f0V-f4d52-45tghYfQBhjOy0",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "Wq9a66Nl-879rf-Io424-Yxd52-e04ca9GDfd06L",
+						"type": "text"
+					},
+					{
+						"key": "trace_id",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "trace_id",
+						"value": "dd2ff6b8-45b1-472c-948d-a925266effb1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/jwt/generate-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jwt",
+						"generate-token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
