@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<!--<html>-->
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Auth</title>
+</head>
+<body>
+
+<h1>Learning Springboot with HTML Form - User input</h1>
+<form action="auth" method="post">
+<label for="grantType">Grant Type :</label> <br/>
+<input type="text" name="grantType"/> <br/>
+
+<label for="clientId">Client Id :</label> <br/>
+<input type="text" name="clientId"/> <br/>
+
+<label for="clientSecret">Client Secret :</label> <br/>
+<input type="text" name="clientSecret"/> <br/>
+
+<br/>
+<button type="submit">Submit</button>
+</form>
+<br/>
+
+<!--<h2 th:text="${grantType}">first name</h2>-->
+<!--<h2 th:text="${clientId}">last name</h2>-->
+<!--<h2 th:text="${clientSecret}">last name</h2>-->
+<h2 th:text="${token}">last name</h2>
+
+</body>
+</html>

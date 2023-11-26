@@ -19,7 +19,7 @@ public class JWTProcessorImpl implements JWTProcessor {
     private JwtConfigValues jwtConfigValues;
 
     @Override
-    public JWTTokenResponse generateToken(String clientId, String clientSecret, String traceId) {
+    public JWTTokenResponse generateToken(String clientId, String clientSecret) {
         String jwtClientId = jwtConfigValues.getClientId();
         String jwtClientSecret = jwtConfigValues.getClientSecret();
         if (clientId.equals(jwtClientId) && clientSecret.equals(jwtClientSecret)) {

@@ -22,6 +22,6 @@ public class JWTTokenController {
             @Schema(description = "Client Id") @RequestHeader(value = "client_id") String clientId,
             @Schema(description = "Client Secret") @RequestHeader(value = "client_secret") String clientSecret,
             @Schema(description = "Trace Id") @RequestHeader(value = "trace_id") String traceId) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(jwtProcessor.generateToken(clientId, clientSecret,traceId));
+        return ResponseEntity.status(HttpStatus.CREATED).body(jwtProcessor.generateToken(clientId, clientSecret));
     }
 }

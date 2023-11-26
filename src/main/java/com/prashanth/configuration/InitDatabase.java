@@ -27,6 +27,9 @@ public class InitDatabase {
             log.info("Database Initialized");
         };
     }
+    void autofill(){
+
+    }
 
     public void customer1Data(Customer customer){
         customer.setCustomerId(1);
